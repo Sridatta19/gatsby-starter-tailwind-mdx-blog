@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -16,34 +15,26 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+      <article itemScope itemType="http://schema.org/Article">
+        <header className="grid grid-cols-blog">
+          <h1
+            className="col-start-2 font-exo font-black text-white text-4xl"
+            itemProp="headline"
+          >
+            {post.frontmatter.title}
+          </h1>
+          <p className="col-start-2 font-yrsa text-gray-50 text-xl">
+            {post.frontmatter.date}
+          </p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
+          className="prose prose-xl mt-8 mx-auto"
         />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+      <nav className="mt-8 grid grid-cols-blog">
+        <ul className="col-start-2 text-lg flex flex-wrap justify-between">
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">

@@ -1,14 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `A blog by Sridatta`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Sridatta Pasumarthy`,
+      summary: `I'm a software developer with over 10 years of experience in java/javascript based full-stack development. I am passionate about frontend, performance and user experience`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `dattacrew19`,
+      linkedin: `sridatta7`,
+      medium: `sridatta7`,
     },
   },
   plugins: [
@@ -51,6 +53,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-postcss`,
     // {
     //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {
@@ -112,7 +115,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `A blog by Sridatta`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,

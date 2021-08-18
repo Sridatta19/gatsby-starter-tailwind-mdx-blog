@@ -1,13 +1,8 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { Linkedin, Medium, Twitter } from "./icons"
+import { IconButton } from "./button"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -20,6 +15,8 @@ const Bio = () => {
           }
           social {
             twitter
+            linkedin
+            medium
           }
         }
       }
@@ -31,27 +28,37 @@ const Bio = () => {
   const social = data.site.siteMetadata?.social
 
   return (
-    <div className="bio">
-      <StaticImage
-        className="bio-avatar"
-        layout="fixed"
-        formats={["AUTO", "WEBP", "AVIF"]}
-        src="../images/profile-pic.png"
-        width={50}
-        height={50}
-        quality={95}
-        alt="Profile picture"
-      />
-      {author?.name && (
-        <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
-          {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
-          </a>
-        </p>
-      )}
-    </div>
+    <>
+      <div className="flex items-center space-x-3">
+        <div className="relative">
+          <StaticImage
+            className="rounded-full overflow-hidden"
+            layout="fixed"
+            formats={["AUTO", "WEBP", "AVIF"]}
+            src="../images/profile-pic.png"
+            width={50}
+            height={50}
+            quality={95}
+            alt="Profile picture"
+          />
+        </div>
+        <div className="text-white">
+          <h3 className="font-bold font-exo tracking-wide">{author.name}</h3>
+          <div className="pt-2 flex justify-evenly">
+            <IconButton href={social.medium}>
+              <Medium className="w-5 h-5 fill-current" />
+            </IconButton>
+            <IconButton href={social.twitter}>
+              <Twitter className="w-5 h-5 fill-current" />
+            </IconButton>
+            <IconButton href={social.linkedin}>
+              <Linkedin className="w-5 h-5 fill-current" />
+            </IconButton>
+          </div>
+        </div>
+      </div>
+      <p className="mt-9 font-yrsa text-lg text-gray-200">{author.summary}</p>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 ---
 title: Hello World
 date: "2015-05-01T22:12:03.284Z"
+tags: CSS, Animation
 description: "Hello World"
 ---
 
@@ -19,7 +20,7 @@ Oh, and here's a great quote from this Wikipedia on
 > salted duck eggs have a briny aroma, a gelatin-like egg white and a
 > firm-textured, round yolk that is bright orange-red in color.
 
-![Chinese Salty Egg](./salty_egg.jpg)
+![Chinese Salty Egg](./salty_egg_copy.jpg)
 
 You can also write code blocks here!
 
@@ -160,36 +161,6 @@ This is a paragraph.
 1. **bold** goes here
 ```
 
-Paragraph:
-
-    Code
-
-<!-- -->
-
-    Paragraph:
-
-        Code
-
----
-
----
-
----
-
----
-
----
-
-    * * *
-
-    ***
-
-    *****
-
-    - - -
-
-    ---------------------------------------
-
 This is [an example](http://example.com "Example") link.
 
 [This link](http://example.com) has no title attr.
@@ -226,6 +197,4 @@ This paragraph has some `code` in it.
 
     This paragraph has some `code` in it.
 
-![Alt Text](https://placehold.it/200x50 "Image Title")
-
-    ![Alt Text](https://placehold.it/200x50 "Image Title")
+![Alt Text](http://placehold.it/200x50 "Image Title")

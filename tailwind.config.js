@@ -10,6 +10,8 @@ module.exports = {
       "./src/**/*.js",
       "./src/**/*.tsx",
       "./src/**/*.ts",
+      "./content/**/*.js",
+      "./content/**/*.mdx",
     ],
   },
   darkMode: false, // or 'media' or 'class'
@@ -90,6 +92,9 @@ module.exports = {
         violet: colors.violet,
         fuchsia: colors.fuchsia,
         emerald: colors.emerald,
+      },
+      boxShadow: {
+        button: "6px 6px 13px #d08609, -6px -6px 13px #ffb60d",
       },
       fontFamily: {
         exo: ["Exo", ...defaultTheme.fontFamily.sans],

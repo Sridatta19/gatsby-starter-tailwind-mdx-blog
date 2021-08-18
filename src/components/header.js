@@ -23,7 +23,7 @@ const resources = [
 ]
 export default function Header() {
   return (
-    <Popover className="relative bg-gray-800">
+    <Popover className="sticky top-0 z-10 bg-gray-800 backdrop-blur-md backdrop-saturate-150 bg-opacity-80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -33,7 +33,7 @@ export default function Header() {
             </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-50 hover:text-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-50 hover:text-gray-300 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span className="sr-only">Open menu</span>
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>

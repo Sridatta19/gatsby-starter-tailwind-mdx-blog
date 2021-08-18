@@ -8,6 +8,19 @@ body {
   @apply bg-gray-800 text-white;
 }
 
+code[class*="language-"],
+pre[class*="language-"] {
+  text-shadow: none !important;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  background: transparent !important;
+}
+
 /* exo-700 - latin */
 @font-face {
   font-family: "Exo";

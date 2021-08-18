@@ -1,16 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `A blog by Sridatta`,
+    title: `Gatsby Blog Starter`,
     author: {
-      name: `Sridatta Pasumarthy`,
-      summary: `I'm a software developer with over 10 years of experience in java/javascript based full-stack development. I am passionate about frontend, performance and user experience`,
+      name: `Kyle Mathews`,
+      summary: `who lives and works in San Francisco building useful things.`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `dattacrew19`,
-      linkedin: `sridatta7`,
-      medium: `sridatta7`,
+      twitter: `kylemathews`,
+      linkedin: `kylemathews`,
+      github: `KyleAMathews`,
     },
   },
   plugins: [
@@ -30,9 +30,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [".mdx", ".md"],
+        plugins: [`gatsby-remark-images`],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -45,7 +47,6 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
@@ -77,37 +78,39 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.slug,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
                 })
               })
             },
             query: `
               {
-                allMarkdownRemark(
+                allMdx(
+                  limit: 1000,
                   sort: { order: DESC, fields: [frontmatter___date] },
                 ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
+                  edges {
+                    node {
+                      excerpt
+                      html
                       slug
-                    }
-                    frontmatter {
-                      title
-                      date
+                      frontmatter {
+                        title
+                        date
+                      }
                     }
                   }
                 }
               }
             `,
             output: "/rss.xml",
+            title: "Gatsby RSS feed",
           },
         ],
       },

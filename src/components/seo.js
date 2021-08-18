@@ -10,6 +10,10 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
+import FontUrl1 from "../fonts/exo-v12-latin-700.woff2"
+import FontUrl2 from "../fonts/exo-v12-latin-900.woff2"
+import FontUrl3 from "../fonts/yrsa-v7-latin-regular.woff2"
+
 const Seo = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -71,7 +75,29 @@ const Seo = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link
+        rel="preload"
+        as="font"
+        href={FontUrl1}
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href={FontUrl2}
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href={FontUrl3}
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+    </Helmet>
   )
 }
 

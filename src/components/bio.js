@@ -43,7 +43,7 @@ const Bio = () => {
         />
         <div className="text-white">
           <h3 className="font-bold font-exo tracking-wide">{author.name}</h3>
-          <div className="pt-2 flex justify-evenly">
+          <div className="pt-2 flex space-x-4">
             <IconButton
               label="Twitter"
               href={`https://twitter.com/${social.twitter || ""}`}
@@ -65,7 +65,7 @@ const Bio = () => {
           </div>
         </div>
       </div>
-      <p className="mt-9 font-yrsa text-lg text-gray-200">{author.summary}</p>
+      <p className="mt-5 font-yrsa text-lg text-gray-200">{author.summary}</p>
     </>
   )
 }

@@ -1,8 +1,14 @@
 import React from "react"
 import theme from "prism-react-renderer/themes/shadesOfPurple"
-import Highlight, { defaultProps } from "prism-react-renderer"
+import Highlight, { defaultProps, Language } from "prism-react-renderer"
 
-const Code = ({ codeString, className, language }) => {
+interface CodeProps {
+  codeString: string
+  className: string
+  language: Language
+}
+
+const Code: React.FC<CodeProps> = ({ codeString, language }) => {
   return (
     <Highlight
       {...defaultProps}

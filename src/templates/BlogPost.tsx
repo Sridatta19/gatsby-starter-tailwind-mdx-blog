@@ -2,10 +2,11 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Seo from "../components/seo"
+import { PageProps } from "@/definitions"
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate: React.FC<PageProps> = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
@@ -36,14 +37,14 @@ const BlogPostTemplate = ({ data, location }) => {
         <ul className="col-start-2 text-lg flex flex-wrap justify-between">
           <li>
             {previous && (
-              <Link to={`/${previous.slug}`} rel="prev">
+              <Link to={`/${previous.fields.slug}`} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={`/${next.slug}`} rel="next">
+              <Link to={`/${next.fields.slug}`} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}
@@ -78,13 +79,17 @@ export const pageQuery = graphql`
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {
-      slug
+      fields {
+        slug
+      }
       frontmatter {
         title
       }
     }
     next: mdx(id: { eq: $nextPostId }) {
-      slug
+      fields {
+        slug
+      }
       frontmatter {
         title
       }

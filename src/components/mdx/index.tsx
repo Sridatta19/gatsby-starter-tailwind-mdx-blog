@@ -1,21 +1,23 @@
-import React from "react"
-import CodeBlock from "./code"
+import { MDXProviderComponentsProp, MDXProviderProps } from "@mdx-js/react"
+import React, { ReactElement } from "react"
+import Counter from "../Counter"
+import CodeBlock from "./CodeBlock"
 
-const preToCodeBlock = preProps => {
+const preToCodeBlock = (preProps: MDXProviderProps) => {
   if (
     // children is code element
     preProps.children &&
     // code props
-    preProps.children.props &&
+    (preProps.children as ReactElement).props &&
     // if children is actually a <code>
-    preProps.children.props.mdxType === "code"
+    (preProps.children as ReactElement).props.mdxType === "code"
   ) {
     // we have a <pre><code> situation
     const {
       children: codeString,
       className = "",
       ...props
-    } = preProps.children.props
+    } = (preProps.children as ReactElement).props
 
     const matches = className.match(/language-(?<lang>.*)/)
     if (matches) {
@@ -32,7 +34,7 @@ const preToCodeBlock = preProps => {
   }
 }
 
-const components = {
+const components: MDXProviderComponentsProp = {
   pre: preProps => {
     const props = preToCodeBlock(preProps)
     // if there's a codeString and some props, we passed the test
@@ -43,6 +45,7 @@ const components = {
       return <pre {...preProps} />
     }
   },
+  Counter,
 }
 
 export default components

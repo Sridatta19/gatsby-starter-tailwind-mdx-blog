@@ -6,11 +6,9 @@ module.exports = {
   purge: {
     mode: "all",
     content: [
-      "./src/**/*.jsx",
-      "./src/**/*.js",
       "./src/**/*.tsx",
       "./src/**/*.ts",
-      "./content/**/*.js",
+      "./content/**/*.tsx",
       "./content/**/*.mdx",
     ],
   },

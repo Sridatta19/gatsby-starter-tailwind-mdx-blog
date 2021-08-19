@@ -3,9 +3,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { Github, Linkedin, Twitter } from "./icons"
 import { IconButton } from "./button"
+import { EmptyProps, ISite } from "@/definitions"
 
-const Bio = () => {
-  const data = useStaticQuery(graphql`
+const Bio: React.FC<EmptyProps> = () => {
+  const data: { site: ISite } = useStaticQuery(graphql`
     query BioQuery {
       site {
         siteMetadata {
@@ -33,7 +34,7 @@ const Bio = () => {
         <StaticImage
           className="rounded-full overflow-hidden"
           layout="fixed"
-          formats={["AUTO", "WEBP", "AVIF"]}
+          formats={["auto", "webp", "avif"]}
           src="../images/profile-pic.png"
           width={50}
           height={50}

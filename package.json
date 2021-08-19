@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "gatsby-starter-tailwind-mdx-blog",
   "private": false,
-  "description": "A blog based on starter powered by Gatsby, MDX & Tailwindcss",
-  "version": "0.1.0",
+  "description": "A blog based on starter powered by Gatsby, MDX, Typescript & Tailwindcss",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Sridatta19/gatsby-starter-tailwind-mdx-blog"
@@ -16,6 +16,7 @@
     "gatsby-plugin",
     "MDX",
     "tailwindcss",
+    "typescript",
     "blog"
   ],
   "dependencies": {
@@ -37,12 +38,12 @@
     "gatsby-plugin-postcss": "^4.11.0",
     "gatsby-plugin-react-helmet": "^4.11.0",
     "gatsby-plugin-sharp": "^3.11.0",
+    "gatsby-plugin-typescript": "^3.12.0",
     "gatsby-remark-copy-linked-files": "^4.8.0",
     "gatsby-remark-images": "^5.8.0",
     "gatsby-remark-responsive-iframe": "^4.8.0",
     "gatsby-remark-smartypants": "^4.8.0",
     "gatsby-source-filesystem": "^3.11.0",
-    "gatsby-transformer-remark": "^4.8.0",
     "gatsby-transformer-sharp": "^3.11.0",
     "postcss": "^8.3.6",
     "prism-react-renderer": "^1.2.1",
@@ -51,11 +52,23 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "tailwindcss": "^2.2.7",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typeface-merriweather": "1.1.13",
     "typeface-montserrat": "1.1.13"
   },
   "devDependencies": {
-    "prettier": "2.3.2"
+    "@types/history": "^4.7.9",
+    "@types/mdx-js__react": "^1.5.4",
+    "@types/node": "^16.6.2",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-helmet": "^6.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "2.3.2",
+    "typescript": "^4.3.5"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "license": "0BSD",
@@ -64,9 +77,11 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "tsc": "tsc",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }

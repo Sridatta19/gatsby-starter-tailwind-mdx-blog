@@ -1,11 +1,12 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Bio from "@/components/bio"
+import Layout from "@/components/Layout"
+import Seo from "@/components/seo"
+import { INode, PageProps } from "@/definitions"
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMdx.edges
 
@@ -27,19 +28,19 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
       <ol className="divide-y divide-gray-300 max-w-2xl">
-        {posts.map((post, index) => {
-          const title = post.node.frontmatter.title || post.node.slug
+        {posts.map(({ node }: { node: INode }, index: number) => {
+          const title = node.frontmatter.title || node.fields.slug
           const classes = index === 0 ? "pb-12" : "py-12"
           return (
-            <li key={post.node.slug} className={classes}>
+            <li key={node.fields.slug} className={classes}>
               <article itemScope itemType="http://schema.org/Article">
                 <header>
                   <small className="font-yrsa text-gray-200 text-lg">
-                    {post.node.frontmatter.date}
+                    {node.frontmatter.date}
                   </small>
                   <h2 className="text-2xl font-exo font-black text-white mt-3">
                     <Link
-                      to={post.node.slug}
+                      to={node.fields.slug}
                       itemProp="url"
                       className="rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
                     >
@@ -49,17 +50,16 @@ const BlogIndex = ({ data, location }) => {
                 </header>
                 <p
                   dangerouslySetInnerHTML={{
-                    __html:
-                      post.node.excerpt || post.node.frontmatter.description,
+                    __html: node.excerpt || node.frontmatter.description,
                   }}
                   itemProp="description"
                   className="text-lg font-yrsa text-gray-100 mt-3"
                 />
                 <section className="font-yrsa text-gray-200 uppercase md:text-sm space-x-2 mt-3">
-                  {(post.node.frontmatter.tags || "")
+                  {(node.frontmatter.tags || "")
                     .split(",")
-                    .map(s => s.trim())
-                    .map(s => (
+                    .map((s: string) => s.trim())
+                    .map((s: string) => (
                       <span key={s}>{`#${s}`}</span>
                     ))}
                 </section>
@@ -85,7 +85,9 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
-          slug
+          fields {
+            slug
+          }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title

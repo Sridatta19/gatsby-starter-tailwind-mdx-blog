@@ -3,8 +3,16 @@ import { MDXProvider } from "@mdx-js/react"
 import Bio from "./bio"
 import Header from "./header"
 import components from "./mdx"
+import { Location } from "history"
+import { ReactNode } from "react"
 
-const Layout = ({ location, title, children }) => {
+interface LayoutProps {
+  location: Location
+  title: string
+  children: ReactNode
+}
+
+const Layout: React.FC<LayoutProps> = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header

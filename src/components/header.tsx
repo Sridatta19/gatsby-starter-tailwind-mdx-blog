@@ -2,26 +2,11 @@ import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import { Popover, Transition } from "@headlessui/react"
 import { HomeIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
+import { EmptyProps } from "@/definitions"
 
-const resources = [
-  {
-    name: "Dashboard",
-    href: "#",
-  },
-  {
-    name: "Posts",
-    href: "#",
-  },
-  {
-    name: "Projects",
-    href: "#",
-  },
-  {
-    name: "About",
-    href: "#",
-  },
-]
-export default function Header() {
+const resources = ["Dashboard", "Posts", "Projects", "About"]
+
+const Header: React.FC<EmptyProps> = () => {
   return (
     <Popover className="sticky top-0 z-10 bg-gray-800 backdrop-blur-md backdrop-saturate-150 bg-opacity-80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -40,13 +25,13 @@ export default function Header() {
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-8">
             {resources.map(item => (
-              <a
-                key={item.name}
-                href={item.href}
+              <Link
+                to="/"
+                key={item}
                 className="whitespace-nowrap text-base font-medium text-gray-50 hover:text-gray-50"
               >
-                {item.name}
-              </a>
+                {item}
+              </Link>
             ))}
           </div>
         </div>
@@ -80,13 +65,13 @@ export default function Header() {
             <div className="py-6 px-5 space-y-6">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                 {resources.map(item => (
-                  <a
-                    key={item.name}
-                    href={item.href}
+                  <Link
+                    to="/"
+                    key={item}
                     className="text-base font-medium text-gray-50 hover:text-gray-50"
                   >
-                    {item.name}
-                  </a>
+                    {item}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -96,3 +81,5 @@ export default function Header() {
     </Popover>
   )
 }
+
+export default Header

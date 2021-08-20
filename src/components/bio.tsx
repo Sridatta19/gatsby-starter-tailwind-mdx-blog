@@ -42,7 +42,7 @@ const Bio: React.FC<EmptyProps> = () => {
           imgStyle={{ borderRadius: "100%" }}
           alt="Profile picture"
         />
-        <div className="text-white">
+        <div>
           <h3 className="font-bold font-exo tracking-wide">{author.name}</h3>
           <div className="pt-2 flex space-x-4">
             <IconButton
@@ -66,7 +66,7 @@ const Bio: React.FC<EmptyProps> = () => {
           </div>
         </div>
       </div>
-      <p className="mt-5 font-yrsa text-lg text-gray-200">{author.summary}</p>
+      <p className="mt-5 font-yrsa text-lg text-skin-fg">{author.summary}</p>
     </>
   )
 }

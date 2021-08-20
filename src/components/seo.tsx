@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import FontUrl1 from "../fonts/exo-v12-latin-900.woff2"
 import FontUrl2 from "../fonts/yrsa-v7-latin-regular.woff2"
 import { ISite } from "@/definitions"
+import { getTheme } from "@/utils/fns"
 
 type MetaProps = JSX.IntrinsicElements["meta"]
 
@@ -70,10 +71,14 @@ const Seo: React.FC<SEOProps> = ({ description, lang, meta, title }) => {
     },
   ]
 
+  const className = getTheme()
+
   return (
     <Helmet
       htmlAttributes={{
         lang,
+        class: className,
+        ...(className === "dark" && { class: className }),
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}

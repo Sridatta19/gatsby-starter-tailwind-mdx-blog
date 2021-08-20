@@ -2,23 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  font-family: "Yrsa";
-  @apply bg-gray-800 text-white;
+@layer base {
+  html,
+  body {
+    font-family: "Yrsa";
+    @apply bg-skin-base text-skin-fg;
+  }
+
+  :root {
+    --color-background: #fff;
+    --color-background-muted: #4b5563;
+    --color-background-medium: #d1d5db;
+
+    --color-text: #1f2937;
+    --color-text-muted: #4b5563;
+
+    --color-focus: #06b6d4;
+    --color-anchor: #8b5cf6;
+    --color-anchor-hover: #a78bfa;
+
+    --color-primary: #fee2e2;
+    --color-secondary: #fef3c7;
+  }
+
+  .dark {
+    --color-background: #002f3c;
+    --color-background-muted: #52525b;
+    --color-background-medium: #e5e7eb;
+
+    --color-text: #f9fafb;
+    --color-text-muted: #d1d5db;
+
+    --color-focus: #84cc16;
+    --color-anchor: #f472b6;
+    --color-anchor-hover: #ec4899;
+
+    --color-primary: #1e3a8a;
+    --color-secondary: #4c1d95;
+  }
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-  text-shadow: none !important;
-}
+@layer utilities {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none !important;
+  }
 
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  background: transparent !important;
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    background: transparent !important;
+  }
 }
 
 /* exo-700 - latin */

@@ -10,7 +10,7 @@ const BlogPostTemplate: React.FC<PageProps> = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-
+  console.log(previous, next)
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
@@ -20,12 +20,12 @@ const BlogPostTemplate: React.FC<PageProps> = ({ data, location }) => {
       <article itemScope itemType="http://schema.org/Article">
         <header className="grid grid-cols-blog">
           <h1
-            className="col-start-2 font-exo font-black text-white text-4xl md:text-6xl"
+            className="col-start-2 font-exo font-black text-skin-fg text-4xl md:text-6xl"
             itemProp="headline"
           >
             {post.frontmatter.title}
           </h1>
-          <p className="col-start-2 font-yrsa text-gray-50 text-xl">
+          <p className="col-start-2 font-yrsa text-skin-fg text-xl">
             {post.frontmatter.date}
           </p>
         </header>
@@ -37,14 +37,14 @@ const BlogPostTemplate: React.FC<PageProps> = ({ data, location }) => {
         <ul className="col-start-2 text-lg flex flex-wrap justify-between">
           <li>
             {previous && (
-              <Link to={`/${previous.fields.slug}`} rel="prev">
+              <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={`/${next.fields.slug}`} rel="next">
+              <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}

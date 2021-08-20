@@ -27,7 +27,7 @@ const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol className="divide-y divide-gray-300 max-w-2xl">
+      <ol className="divide-y divide-skin-fg-muted max-w-2xl">
         {posts.map(({ node }: { node: INode }, index: number) => {
           const title = node.frontmatter.title || node.fields.slug
           const classes = index === 0 ? "pb-12" : "py-12"
@@ -35,14 +35,14 @@ const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
             <li key={node.fields.slug} className={classes}>
               <article itemScope itemType="http://schema.org/Article">
                 <header>
-                  <small className="font-yrsa text-gray-200 text-lg">
+                  <small className="font-yrsa text-skin-fg-muted text-lg">
                     {node.frontmatter.date}
                   </small>
-                  <h2 className="text-2xl font-exo font-black text-white mt-3">
+                  <h2 className="text-2xl font-exo font-black text-skin-fg mt-3">
                     <Link
                       to={node.fields.slug}
                       itemProp="url"
-                      className="rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="rounded-md focus:outline-none focus:ring-4 focus:ring-skin-focus"
                     >
                       <span itemProp="headline">{title}</span>
                     </Link>
@@ -53,9 +53,9 @@ const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
                     __html: node.excerpt || node.frontmatter.description,
                   }}
                   itemProp="description"
-                  className="text-lg font-yrsa text-gray-100 mt-3"
+                  className="text-lg font-yrsa text-skin-fg mt-3"
                 />
-                <section className="font-yrsa text-gray-200 uppercase md:text-sm space-x-2 mt-3">
+                <section className="font-yrsa text-skin-fg-muted uppercase md:text-sm space-x-2 mt-3">
                   {(node.frontmatter.tags || "")
                     .split(",")
                     .map((s: string) => s.trim())

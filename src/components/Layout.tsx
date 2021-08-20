@@ -1,10 +1,9 @@
-import * as React from "react"
-import { MDXProvider } from "@mdx-js/react"
+import React from "react"
 import Bio from "./bio"
 import Header from "./header"
-import components from "./mdx"
 import { Location } from "history"
 import { ReactNode } from "react"
+import ThemeSwitch from "./ThemeSwitch"
 
 interface LayoutProps {
   location: Location
@@ -20,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ location, children }) => {
   if (isRootPath) {
     header = (
       <div className="w-full md:w-1/3 relative">
-        <div className="md:h-full p-8 flex flex-col justify-center bg-gray-800">
+        <div className="md:h-full p-8 flex flex-col justify-center bg-skin-base transition-colors">
           <Bio />
         </div>
       </div>
@@ -30,18 +29,21 @@ const Layout: React.FC<LayoutProps> = ({ location, children }) => {
   }
 
   return (
-    <MDXProvider {...{ components }}>
+    <div
+      className={`md:h-screen relative antialiased flex flex-col ${
+        isRootPath ? "md:flex-row overflow-hidden" : ""
+      } selection:bg-yellow-200 selection:text-black`}
+    >
       <div
-        className={`md:h-screen antialiased flex flex-col ${
-          isRootPath ? "md:flex-row overflow-hidden" : ""
-        } selection:bg-yellow-200 selection:text-black`}
+        className={`${isRootPath ? "" : "hidden"} absolute top-0 right-0 m-5`}
       >
-        {header}
-        <main className="flex-1 bg-gradient-to-br from-blue-900 to-purple-900 px-8 lg:px-24 py-8 md:py-16 overflow-y-auto">
-          {children}
-        </main>
+        <ThemeSwitch />
       </div>
-    </MDXProvider>
+      {header}
+      <main className="flex-1 bg-gradient-to-br from-skin-primary to-skin-secondary transition-colors px-8 lg:px-24 py-8 md:py-16 overflow-y-auto">
+        {children}
+      </main>
+    </div>
   )
 }
 

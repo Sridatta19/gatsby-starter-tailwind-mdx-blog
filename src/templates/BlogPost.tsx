@@ -10,7 +10,6 @@ const BlogPostTemplate: React.FC<PageProps> = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  console.log(previous, next)
   return (
     <Layout location={location} title={siteTitle}>
       <Seo

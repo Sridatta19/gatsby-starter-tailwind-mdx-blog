@@ -9,7 +9,7 @@ const Button: React.FC<ButtonProps> = ({ children, label, onClick }) => {
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="text-center p-2 border border-transparent rounded-sm shadow-light dark:shadow-button bg-skin-focus focus:outline-none focus:ring-2 focus:ring-skin-focus"
+      className="text-center p-2 border border-transparent rounded-xl shadow-light dark:shadow-button bg-skin-focus focus:outline-none focus:ring-2 focus:ring-skin-focus"
     >
       {children}
     </button>

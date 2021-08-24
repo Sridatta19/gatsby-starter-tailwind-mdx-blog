@@ -30,8 +30,8 @@ const Layout: React.FC<LayoutProps> = ({ location, children }) => {
 
   return (
     <div
-      className={`md:h-screen relative antialiased flex flex-col ${
-        isRootPath ? "md:flex-row overflow-hidden" : ""
+      className={`relative antialiased flex flex-col ${
+        isRootPath ? "md:h-screen md:flex-row overflow-hidden" : ""
       } selection:bg-yellow-200 selection:text-black`}
     >
       <div

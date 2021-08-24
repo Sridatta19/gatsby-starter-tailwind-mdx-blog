@@ -1,5 +1,14 @@
 const defaultTheme = require("tailwindcss/defaultTheme")
 
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgba(var(${variableName}), ${opacityValue})`
+    }
+    return `rgba(var(${variableName}))`
+  }
+}
+
 const themes = {
   skin: {
     base: "var(--color-background)",
@@ -12,6 +21,8 @@ const themes = {
     "fg-muted": "var(--color-text-muted)",
     primary: "var(--color-primary)",
     secondary: "var(--color-secondary)",
+    header: withOpacity("--color-header"),
+    "header-fg": withOpacity("--color-header-text"),
   },
 }
 

@@ -15,6 +15,8 @@
     --color-background-medium: #d1d5db;
 
     --color-text: #1f2937;
+    --color-header: 0, 0, 0;
+    --color-header-text: 245, 245, 245;
     --color-text-muted: #4b5563;
 
     --color-focus: #06b6d4;
@@ -31,6 +33,8 @@
     --color-background-medium: #e5e7eb;
 
     --color-text: #f9fafb;
+    --color-header: 17, 24, 39;
+    --color-header-text: 245, 245, 245;
     --color-text-muted: #d1d5db;
 
     --color-focus: #84cc16;

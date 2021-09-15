@@ -1,5 +1,13 @@
 import { Location } from "history"
 
+export interface ButtonProps {
+  children: ReactNode
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  href?: string
+  label?: string
+  isLarge?: boolean
+}
+
 interface EmptyProps {}
 
 interface PageProps {

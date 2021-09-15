@@ -1,7 +1,7 @@
-import * as React from "react"
-import { ReactNode } from "react"
+import React from "react"
+import { ButtonProps } from "../button"
 
-export const IconButton: React.FC<ButtonProps> = ({
+const IconButton: React.FC<ButtonProps> = ({
   href,
   label,
   children,
@@ -21,10 +21,4 @@ export const IconButton: React.FC<ButtonProps> = ({
   )
 }
 
-export interface ButtonProps {
-  children: ReactNode
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
-  href?: string
-  label?: string
-  isLarge?: boolean
-}
+export default IconButton

@@ -1,9 +1,7 @@
-import React from "react"
-import Bio from "./bio"
-import Header from "./header"
+import React, { ReactNode } from "react"
 import { Location } from "history"
-import { ReactNode } from "react"
-import ThemeSwitch from "./ThemeSwitch"
+
+import { Header, Bio, ThemeSwitch } from "./common"
 
 interface LayoutProps {
   location: Location

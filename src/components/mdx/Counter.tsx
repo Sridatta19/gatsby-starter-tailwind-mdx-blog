@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { PlusIcon, MinusIcon } from "@heroicons/react/outline"
 import { EmptyProps } from "@/definitions"
-import { ButtonProps } from "./button"
+import { ButtonProps } from "../button"
 
 const Button: React.FC<ButtonProps> = ({ children, label, onClick }) => {
   return (

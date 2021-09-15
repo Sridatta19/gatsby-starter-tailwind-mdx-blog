@@ -1,9 +1,8 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "@/components/bio"
+import { Bio, Seo } from "@/components/common"
 import Layout from "@/components/Layout"
-import Seo from "@/components/seo"
 import { INode, PageProps } from "@/definitions"
 
 const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
